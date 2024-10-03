@@ -24,16 +24,17 @@
 
     <!-- <script src="./script.js"></script> -->
     <script>
-        const apiUrl = "https://api.quotable.io/random";
+        const apiUrl = "https://dummyjson.com/quotes";
         const qoute = document.getElementById("qoute");
         const author = document.getElementById("author");
+        let id = 0;
 
         async function getQoute(url) {
             const response = await fetch(url)
             let data = await response.json();
-
-            qoute.innerHTML = data.content;
-            author.innerHTML = data.author;
+            qoute.innerHTML = data.quotes[id].quote;
+            author.innerHTML = data.quotes[id].author;
+            id++;
         }
 
         getQoute(apiUrl);
